@@ -1,0 +1,3 @@
+[submodule "Training-C"]
+	path = Training-C
+	url = https://github.com/GuiQuad06/Training-C.git
