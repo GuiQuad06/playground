@@ -22,7 +22,13 @@ clean:
 # Target built with arm non eabi toolchain
 .PHONY: arm
 arm: $(NAME)-$(CORE).elf
+	@echo '___________________________'
+	@echo '_____ BUILD FOR ARM $(CORE) ____ '
+	@echo '___________________________'
 
 # Target built with native GCC
 .PHONY: native
 native: $(NAME)
+	@echo '___________________________'
+	@echo '_____ BUILD FOR x86_64 ____ '
+	@echo '___________________________'
