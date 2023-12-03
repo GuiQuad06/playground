@@ -4,7 +4,7 @@ NAME=main
 STARTUP_DEFS=-D__STARTUP_CLEAR_BSS -D__START=main
 
 LDSCRIPTS=-L. -L$(BASE)/ldscripts -T nokeep.ld
-LFLAGS=-lc -lgcc
+LFLAGS=-lc -lm -lgcc
 ARM_LFLAGS=$(LCOV) $(STD_LIB) $(USE_NOHOST) $(LDSCRIPTS) $(GC) $(MAP)
 
 $(NAME)-$(CORE).elf: $(SRC)/$(NAME).c $(STARTUP)
