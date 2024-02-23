@@ -46,5 +46,5 @@ int main()
     printf("%s\n", myString);
     // Fin de l'exemple
 
-	return 0;
+    return 0;
 }
