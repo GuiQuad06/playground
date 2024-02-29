@@ -1,50 +1,63 @@
-#include <ctype.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
+#include <time.h>
 
-#define NMAX    10000
+#include "sort.h"
+
+#define N    (800000u)
+
+static void create_rand_array(int data[], size_t len)
+{
+    for (int i = 0; i < len; i++)
+    {
+        data[i] = rand();
+    }
+}
 
 int main()
 {
-    FILE *fptr;
+    srand( time( NULL ) );
 
-    // Open a file in read mode
-    fptr = fopen("../input.txt", "r");
+    int toto[N];
+    create_rand_array(toto, N);
 
-    // Store the content of the file
-    char myString[NMAX];
+    clock_t begin = clock();
 
-    // If the file exist
-    if(fptr != NULL)
-    {
-        // Read the content and print it
-        // "for line in text:" equivalent
-        while(fgets(myString, NMAX, fptr))
-        {
-            // Do the thing
-        }
+    selection_sort(toto, N);
 
-    }
-    // If the file does not exist
-    else
-    {
-        printf("Not able to open the file.");
-    }
+    clock_t end = clock();
+    unsigned long ticks = (unsigned long) (end - begin);
+    printf( "Selection Sort Finished in %ld ticks\n", ticks ); 
 
-    // Close the file
-    fclose(fptr);
+    create_rand_array(toto, N);
 
-    // Exemple de parcours de la chaine extraite :
-    char * ptr = myString;
-    while(*ptr != '\0')
-    {
-        *ptr = toupper(*ptr);
-        ptr++;
-    }
+    begin = clock();
 
-    printf("%s\n", myString);
-    // Fin de l'exemple
+    bubble_sort(toto, N);
 
-    return 0;
+    end = clock();
+    ticks = (unsigned long) (end - begin);
+    printf( "bubble_sort Finished in %ld ticks\n", ticks ); 
+
+    create_rand_array(toto, N);
+    
+    begin = clock();
+
+    swapping_sort(toto, N);
+
+    end = clock();
+    ticks = (unsigned long) (end - begin);
+    printf( "swapping_sort Finished in %ld ticks\n", ticks ); 
+
+    create_rand_array(toto, N);
+
+    begin = clock();
+
+    merge_sort(toto, N);
+
+    end = clock();
+    ticks = (unsigned long) (end - begin);
+    printf( "Merge sort Finished in %ld ticks\n", ticks ); 
+
+    return EXIT_SUCCESS;
 }
