@@ -5,7 +5,7 @@ echo -n "Specify target : (native/CM0/CM3/CM4/CM7)"
 read target
 
 if [ ${target} = "native" ]; then
-    NAME="main"
+    NAME="main-main"
 elif [[ ${target} =~ CM[0347] ]]; then
     NAME="main-${target}.elf-main"
 else
