@@ -3,48 +3,19 @@
 #include <stdio.h>
 #include <string.h>
 
-#define NMAX    10000
+#include "string_list.h"
 
 int main()
 {
-    FILE *fptr;
+    string_list_t my_list;
+    const char* string = "Hello,World";
 
-    // Open a file in read mode
-    fptr = fopen("../input.txt", "r");
+    string_list_init(&my_list);
 
-    // Store the content of the file
-    char myString[NMAX];
+    int wc = string_list_split(&my_list, string, ',', 1);
+    printf("There are %d words in the given sentence\n", wc);
 
-    // If the file exist
-    if(fptr != NULL)
-    {
-        // Read the content and print it
-        // "for line in text:" equivalent
-        while(fgets(myString, NMAX, fptr))
-        {
-            // Do the thing
-        }
-
-    }
-    // If the file does not exist
-    else
-    {
-        printf("Not able to open the file.");
-    }
-
-    // Close the file
-    fclose(fptr);
-
-    // Exemple de parcours de la chaine extraite :
-    char * ptr = myString;
-    while(*ptr != '\0')
-    {
-        *ptr = toupper(*ptr);
-        ptr++;
-    }
-
-    printf("%s\n", myString);
-    // Fin de l'exemple
+    string_list_clear(&my_list);
 
     return 0;
 }
